@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Server Memory Monitor</title>
+  <script>
+    window.onload = () => {
+      const eventSource = new EventSource('http://localhost:8080/sse');
+      eventSource.onmessage = e => {
+        const msg = JSON.parse(e.data);
+        document.getElementById("ts").innerHTML = msg.ts;
+        document.getElementById("heap").innerHTML = msg.heap;
+        document.getElementById("nonheap").innerHTML = msg.nonHeap;
+      };
+    };
+  </script>
+</head>
+<body>
+  <h1>Memory Observer</h1>
+  <h2>Timestamp</h2>
+  <div id="ts">Please wait ...</div>
+  <h2>Heap Memory Usage</h2>
+  <div id="heap">Please wait ...</div>
+  <h2>Non Heap Memory Usage</h2>
+  <div id="nonheap">Please wait ...</div>
+</body>
+</html>
