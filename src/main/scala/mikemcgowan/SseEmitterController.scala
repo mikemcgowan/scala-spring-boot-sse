@@ -23,11 +23,11 @@ class SseEmitterController {
   }
 
   @EventListener
-  def onMemoryInfo(memoryInfo: MemoryInfo): Unit = {
+  def onLogout(logout: Logout): Unit = {
     val deadEmitters = new util.ArrayList[SseEmitter]
     emitters forEach (emitter => {
       try {
-        emitter send memoryInfo.toJsonString
+        emitter send logout.toJsonString
       } catch {
         case _: Exception => deadEmitters add emitter
       }
