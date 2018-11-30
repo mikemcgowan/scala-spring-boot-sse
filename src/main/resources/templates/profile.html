@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Profile (private)</title>
-  <script>
-    window.onload = () => {
-      const username = '[[${#httpServletRequest.remoteUser}]]';
-      const eventSource = new EventSource('http://localhost:8080/sse');
-      eventSource.onmessage = e => {
-        const msg = JSON.parse(e.data);
-        if (msg.username === username) {
-          console.log('You have been logged out!');
-          eventSource.close();
-        } else {
-          console.log(`Someone else (${msg.username}) has been logged out (but who cares?)`);
-        }
-      };
-    };
-  </script>
+    <title>Profile (private)</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+    <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+    <script>
+        window.onload = () => {
+            const username = '[[${#httpServletRequest.remoteUser}]]';
+            const eventSource = new EventSource('http://localhost:8080/sse');
+            eventSource.onmessage = e => {
+                const msg = JSON.parse(e.data);
+                if (msg.username === username) {
+                    console.log('You have been logged out!');
+                    eventSource.close();
+                } else {
+                    console.log(`Someone else (${msg.username}) has been logged out (but who cares?)`);
+                }
+            };
+        };
+    </script>
 </head>
 <body>
-  <h1>Profile (private)</h1>
-  <h2 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h2>
-  <form th:action="@{/logout}" method="post">
-    <input type="submit" value="Sign Out"/>
-  </form>
+<div class="container">
+    <h1>Profile (private)</h1>
+    <h2 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h2>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
+</div>
 </body>
 </html>

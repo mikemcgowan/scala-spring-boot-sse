@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Home (public)</title>
+    <title>Home (public)</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+    <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
 </head>
 <body>
-  <h1>Home (public)</h1>
-  <a th:href="@{/login}">Login</a>
-  <a th:href="@{/profile}">Profile</a>
+<div class="container">
+    <h1>Home (public)</h1>
+    <a th:href="@{/login}">Login</a>
+    <a th:href="@{/profile}">Profile</a>
+</div>
 </body>
 </html>

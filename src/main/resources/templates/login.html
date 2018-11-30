@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Login (public)</title>
+    <title>Login (public)</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+    <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
 </head>
 <body>
-  <h1>Login (public)</h1>
-  <div th:if="${param.error}">
-    Invalid username or password.
-  </div>
-  <div th:if="${param.logout}">
-    You have been logged out.
-  </div>
-  <form th:action="@{/login}" method="post">
-    <div><label>Username: <input type="text" name="username"/></label></div>
-    <div><label>Password: <input type="password" name="password"/></label></div>
-    <div><input type="submit" value="Sign In"/></div>
-  </form>
+<div class="container">
+    <h1>Login (public)</h1>
+    <div th:if="${param.error}">
+        Invalid username or password.
+    </div>
+    <div th:if="${param.logout}">
+        You have been logged out.
+    </div>
+    <form th:action="@{/login}" method="post">
+        <div><label>Username: <input type="text" name="username"/></label></div>
+        <div><label>Password: <input type="password" name="password"/></label></div>
+        <div><input type="submit" value="Sign In"/></div>
+    </form>
+</div>
 </body>
 </html>
