@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping
 class DefaultController {
 
   @RequestMapping(Array("/"))
-  def home(): String = "home"
+  def home = "home"
 
   @RequestMapping(Array("/profile"))
-  def profile(): String = "profile"
+  def profile = "profile"
 
   @RequestMapping(Array("/login"))
-  def login(): String = "login"
+  def login = "login"
 
 }
